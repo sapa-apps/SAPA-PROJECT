@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">LoginWithAnimation</string>
+    <string name="signup">Daftar</string>
+    <string name="login">Masuk</string>
+    <string name="btn_google">Continue with Google</string>
+
+    <string name="message_welcome_page">Mau belajar Android, iOS, Machine Learning, Cloud, Front-End, Back-End, dan bidang IT lainnya? Di Dicoding aja!</string>
+    <string name="title_welcome_page">Selamat datang di Dicoding!</string>
+    <string name="title_signup_page">Lets Register</string>
+    <string name="title_signup_page2">Account</string>
+    <string name="subtitle_signup_page">Hello user, you have</string>
+    <string name="subtitle_signup_page2">a greatful journey</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="message_login_page">Welcome Back,</string>
+    <string name="message_login_page2">You Have Been Missed</string>
+    <string name="title_login_page">Lets Sign you in</string>
+    <string name="name">Nama</string>
+    <string name="message_main_page">Selamat Belajar di Dicoding.</string>
+    <string name="greeting">Halo %1$s,</string>
+    <string name="logout">Keluar</string>
+    <string name="or">or</string>
+    <string name="title_home">Home</string>
+    <string name="title_camera">Camera</string>
+    <string name="title_settings">Settings</string>
+    <string name="logo_description">logo</string>
+    <string name="profile_picture">Profile</string>
+    <string name="settings_account">Account</string>
+    <string name="navigate_to_account">Navigate to Account</string>
+    <string name="night_mode">Night Mode</string>
+    <string name="sign_out">Night Mode</string>
+    <string name="about_app">About App</string>
+    <string name="navigate_to_about">Navigate to About</string>
+    <string name="header_greetings">Hallo, %1$s</string>
+
+</resources>
