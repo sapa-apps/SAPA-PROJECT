@@ -1,22 +1,28 @@
-package com.capstone.sapa.ui.history
+package com.capstone.sapa
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.capstone.sapa.R
+import com.capstone.sapa.ui.history.AllHistoryActivity
+import com.capstone.sapa.ui.history.DetailActivity
+import com.capstone.sapa.ui.history.HistoryAdapter
+import com.capstone.sapa.ui.history.HistoryViewModel
 
-class AllHistoryActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: HistoryViewModel
     private lateinit var adapter: HistoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_all_history)
+        setContentView(R.layout.activity_main)
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        val viewAllButton: Button = findViewById(R.id.viewAllButton)
 
         viewModel = ViewModelProvider(this)[HistoryViewModel::class.java]
         adapter = HistoryAdapter { history ->
@@ -28,8 +34,17 @@ class AllHistoryActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        viewModel.allHistory.observe(this) { historyList ->
+        viewModel.recentHistory.observe(this) { historyList ->
+            Log.d("MainActivity", "History List: $historyList")
             adapter.submitList(historyList)
+        }
+
+        viewAllButton.setOnClickListener {
+            startActivity(Intent(this, AllHistoryActivity::class.java))
         }
     }
 }
+
+
+
+
