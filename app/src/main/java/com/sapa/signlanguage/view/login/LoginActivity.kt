@@ -72,11 +72,21 @@ class LoginActivity : AppCompatActivity() {
                             Log.d("LoginActivity", "Login berhasil: ${task.result?.user?.uid}")
                             val user = FirebaseAuth.getInstance().currentUser
                             if (user != null) {
-                                Log.d("LoginActivity", "Memulai intent ke MainActivity")
-                                val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                startActivity(intent)
-                                finish()
+                                user.getIdToken(true).addOnCompleteListener { tokenTask ->
+                                    if (tokenTask.isSuccessful) {
+                                        val idToken = tokenTask.result?.token
+                                        Log.d("LoginActivity", "Token: $idToken")
+                                        // Simpan token dan lanjutkan ke MainActivity
+                                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                                        intent.putExtra("idToken", idToken)
+                                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                        startActivity(intent)
+                                        finish()
+                                    } else {
+                                        Log.e("LoginActivity", "Gagal mendapatkan token: ${tokenTask.exception?.message}")
+                                        showToast("Gagal mendapatkan token")
+                                    }
+                                }
                             } else {
                                 showToast("Login berhasil, tapi user tidak ditemukan")
                             }
@@ -85,11 +95,9 @@ class LoginActivity : AppCompatActivity() {
                             showToast(task.exception?.message ?: "Login gagal")
                         }
                     }
-
             }
         }
     }
-
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
@@ -219,5 +227,4 @@ class LoginActivity : AppCompatActivity() {
             startDelay = 100
         }.start()
     }
-
 }
