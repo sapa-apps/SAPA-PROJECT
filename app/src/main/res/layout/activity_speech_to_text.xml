@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Speech to Text"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp" />
+
+    <!-- TextView to display recognized text, flexible size -->
+    <TextView
+        android:id="@+id/tvSpeechResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTitle"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:gravity="top|start"
+        android:hint="Speech result will appear here..."
+        android:textSize="18sp"
+        android:maxLines="10"
+        android:ellipsize="end"
+        android:scrollbars="vertical" />
+
+    <!-- Button with microphone icon, fixed at the bottom -->
+    <ImageButton
+        android:id="@+id/btnMic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/ic_circle"
+        android:src="@drawable/ic_speech"
+        android:contentDescription="Start Speech Recognition"
+        android:scaleType="centerInside" />
+
+
+</RelativeLayout>

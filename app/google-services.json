@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "733973953931",
+    "project_id": "project-nyoba-sapa",
+    "storage_bucket": "project-nyoba-sapa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:733973953931:android:6969cb994e7f42822c038e",
+        "android_client_info": {
+          "package_name": "com.sapa.signlanguage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "733973953931-m5nla1panb21pe0fi1tq3bqqbkautfa9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sapa.signlanguage",
+            "certificate_hash": "159cbd4cf3be4d9322227d6ad99f19a9cee02a7a"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCe_tIkkRXegKYU7rN3TPF2bhdHiYXtflo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
