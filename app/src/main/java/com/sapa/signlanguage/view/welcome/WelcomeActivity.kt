@@ -37,8 +37,6 @@ class WelcomeActivity : AppCompatActivity() {
             toggleDarkMode(isDarkMode)
         }
 
-
-
         setupView()
         setupAction()
         checkSession()

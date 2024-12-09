@@ -13,6 +13,7 @@ class UserRepository private constructor(
     suspend fun saveDarkMode(isDarkMode: Boolean) {
         userPreference.saveDarkMode(isDarkMode)
     }
+
     fun getDarkMode(): Flow<Boolean> {
         return userPreference.getDarkMode()
     }
@@ -20,19 +21,24 @@ class UserRepository private constructor(
     suspend fun saveProfile(profile: ProfileResponse) {
         userPreference.saveProfile(profile)
     }
+
     fun getProfile(): Flow<ProfileResponse?> {
         return userPreference.getProfile()
     }
+
     suspend fun clearProfile() {
         userPreference.clearProfile()  // Pastikan ada fungsi untuk menghapus profil di UserPreference
     }
-
 
     suspend fun saveSession(user: UserModel) {
         userPreference.saveSession(user)
     }
 
-    private suspend fun saveJwtToken(jwtToken: String) {
+    suspend fun clearGuestSession() {
+        userPreference.clearGuestSession() // Panggil fungsi untuk menghapus sesi tamu
+    }
+
+    suspend fun saveJwtToken(jwtToken: String) {
         val user = UserModel(email = "", token = jwtToken, isLogin = true)
         userPreference.saveSession(user)
     }
@@ -45,15 +51,15 @@ class UserRepository private constructor(
         userPreference.logout()
     }
 
-    // Menyimpan session sebagai guest
     suspend fun saveGuestSession() {
         val guestUser = UserModel(isLogin = false, isGuest = true)
-        userPreference.saveSession(guestUser)
+        userPreference.saveSession(guestUser)  // Menyimpan status tamu
     }
 
     companion object {
         @Volatile
         private var instance: UserRepository? = null
+
         fun getInstance(userPreference: UserPreference): UserRepository =
             instance ?: synchronized(this) {
                 instance ?: UserRepository(userPreference)

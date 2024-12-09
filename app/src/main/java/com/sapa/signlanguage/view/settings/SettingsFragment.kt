@@ -22,6 +22,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import android.util.Log
 import com.sapa.signlanguage.view.ViewModelFactory
+import com.sapa.signlanguage.view.main.MainActivity
 
 class SettingsFragment : Fragment() {
 
@@ -43,12 +44,30 @@ class SettingsFragment : Fragment() {
         // Inisialisasi ViewModel
         settingsViewModel = ViewModelProvider(this, ViewModelFactory(userRepository))[SettingsViewModel::class.java]
 
+        // Periksa sesi tamu dan batasi akses jika perlu
+        checkSession()
+
         // Menambahkan listener untuk layout yang mengarahkan ke SettingsAccountActivity
         val settingsAccountLayout: LinearLayout = binding.settingsAccountLayout
         settingsAccountLayout.setOnClickListener {
-            // Intent untuk membuka SettingsAccountActivity
             val intent = Intent(requireContext(), SettingsAccountActivity::class.java)
             startActivity(intent)
+        }
+
+        // Mengatur Switch sesuai Dark Mode dari DataStore
+        lifecycleScope.launch {
+            val isDarkMode = userRepository.getDarkMode().first()
+            binding.switchNightMode.isChecked = isDarkMode
+        }
+
+        // Menambahkan listener untuk Switch Night Mode
+        binding.switchNightMode.setOnCheckedChangeListener { _, isChecked ->
+            lifecycleScope.launch {
+                userRepository.saveDarkMode(isChecked)
+                AppCompatDelegate.setDefaultNightMode(
+                    if (isChecked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+                )
+            }
         }
 
         // Mengamati perubahan data profil
@@ -59,7 +78,7 @@ class SettingsFragment : Fragment() {
                 binding.textViewEmail.text = profile.email
                 Glide.with(this).load(profile.fotoProfil).into(binding.imageViewFotoProfil)
             } else {
-                showToast("Profil gagal dimuat")
+                Log.e("SettingsFragment", "Profil gagal dimuat")
             }
         }
 
@@ -68,8 +87,27 @@ class SettingsFragment : Fragment() {
         return root
     }
 
-    private fun showToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    private fun checkSession() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            userRepository.getSession().collect { user ->
+                if (user.isGuest) {
+                    // Jika pengguna adalah tamu, tampilkan pesan dan alihkan
+                    Toast.makeText(
+                        requireContext(),
+                        "Fitur Settings Account hanya tersedia untuk pengguna terdaftar.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    disableAccountAccess()
+                }
+            }
+        }
+    }
+
+    private fun disableAccountAccess() {
+        // Nonaktifkan layout atau tombol untuk akun
+        binding.settingsAccountLayout.isEnabled = false
+        binding.switchNightMode.isEnabled = false
+        binding.settingsAccountLayout.alpha = 0.5f // Memberi efek disable pada layout
     }
 
     private fun setupAction() {
@@ -79,8 +117,7 @@ class SettingsFragment : Fragment() {
 
             // Logout dari DataStore (UserPreference)
             lifecycleScope.launch {
-
-                userRepository.logout()  // Menyelesaikan proses logout lainnya jika diperlukan
+                userRepository.logout()
             }
 
             // Pastikan tidak ada session aktif dan arahkan ke WelcomeActivity
@@ -92,11 +129,8 @@ class SettingsFragment : Fragment() {
         }
     }
 
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 }
-

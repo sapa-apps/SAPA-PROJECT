@@ -188,15 +188,14 @@ class LoginActivity : AppCompatActivity() {
                             val user = FirebaseAuth.getInstance().currentUser
                             Log.d("GuestAuth", "Guest authenticated with UID: ${user?.uid}")
 
-                            // Simpan session tamu ke UserRepository
                             lifecycleScope.launch {
                                 val guestUser = UserModel(
                                     email = user?.email ?: "",
                                     token = user?.uid ?: "",
                                     isLogin = true,
-                                    isGuest = true
+                                    isGuest = true  // Menandakan status sebagai tamu
                                 )
-                                userRepository.saveSession(guestUser) // Menyimpan session guest
+                                userRepository.saveGuestSession() // Menyimpan session guest
                             }
 
                             // Intent ke halaman utama sebagai tamu

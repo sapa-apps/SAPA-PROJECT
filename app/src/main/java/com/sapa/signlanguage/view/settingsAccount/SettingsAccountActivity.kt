@@ -14,9 +14,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.firebase.auth.FirebaseAuth
 import com.sapa.signlanguage.R
+import com.sapa.signlanguage.di.Injection
 import com.sapa.signlanguage.utils.Resource
+import com.sapa.signlanguage.view.welcome.WelcomeActivity
+import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -56,6 +60,8 @@ class SettingsAccountActivity : AppCompatActivity() {
             when (resource) {
                 is Resource.Success -> {
                     Toast.makeText(this, resource.data, Toast.LENGTH_SHORT).show()
+                    logoutAndNavigateToWelcome()
+
                 }
                 is Resource.Error -> {
                     Toast.makeText(this, resource.message, Toast.LENGTH_SHORT).show()
@@ -92,13 +98,13 @@ class SettingsAccountActivity : AppCompatActivity() {
                 }
 
                 if (fotoFile.exists()) {
-                    val fotoProfilPart = fotoFile.asRequestBody("image/jpeg".toMediaTypeOrNull())
-                    val fotoProfil = MultipartBody.Part.createFormData("fotoProfil", fotoFile.name, fotoProfilPart)
+                    val imagesPart = fotoFile.asRequestBody("image/jpeg".toMediaTypeOrNull())
+                    val images = MultipartBody.Part.createFormData("images", fotoFile.name, imagesPart)
 
                     // Log data yang akan dikirim
                     Log.d("Settings", "Mengirim: nama=$nama, email=$email, password=$password, foto=${fotoFile.name}")
 
-                    settingsViewModel.updateProfile(namaPart, emailPart, passwordPart, fotoProfil)
+                    settingsViewModel.updateProfile(namaPart, emailPart, passwordPart, images)
                 } else {
                     Toast.makeText(this, "File gambar tidak ditemukan!", Toast.LENGTH_SHORT).show()
                 }
@@ -150,6 +156,22 @@ class SettingsAccountActivity : AppCompatActivity() {
                 }
             }
         }
+
+    private fun logoutAndNavigateToWelcome() {
+        FirebaseAuth.getInstance().signOut() // Logout dari Firebase
+
+        // Logout dari DataStore atau session
+        lifecycleScope.launch {
+            val userRepository = Injection.provideRepository(this@SettingsAccountActivity)
+            userRepository.logout() // Pastikan UserRepository memiliki metode logout
+
+            // Navigasi ke WelcomeActivity
+            val intent = Intent(this@SettingsAccountActivity, WelcomeActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish() // Mengakhiri SettingsAccountActivity
+        }
+    }
 
     private fun getFirebaseToken(onTokenReceived: (String) -> Unit) {
         val user = FirebaseAuth.getInstance().currentUser

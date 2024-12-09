@@ -144,33 +144,26 @@ class SignupActivity : AppCompatActivity() {
                 FirebaseAuth.getInstance().signInAnonymously()
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            // Jika autentikasi berhasil, kita mendapatkan UID pengguna tamu
                             val user = FirebaseAuth.getInstance().currentUser
                             Log.d("GuestAuth", "Guest authenticated with UID: ${user?.uid}")
 
-                            // Simpan session tamu ke UserRepository
                             lifecycleScope.launch {
                                 val guestUser = UserModel(
                                     email = user?.email ?: "",
                                     token = user?.uid ?: "",
                                     isLogin = true,
-                                    isGuest = true
+                                    isGuest = true  // Status tamu
                                 )
-                                userRepository.saveSession(guestUser) // Menyimpan session guest
+                                userRepository.saveGuestSession()  // Menyimpan session tamu
                             }
 
-                            // Intent ke halaman utama sebagai tamu
-                            val intent = Intent(this@SignupActivity, MainActivity::class.java)
-                            intent.putExtra("isGuest", true) // Opsional, menandakan user sebagai tamu
-                            startActivity(intent)
-
-                            // Menutup SignupActivity setelah berhasil diarahkan ke halaman utama
+                            startActivity(Intent(this@SignupActivity, MainActivity::class.java))
                             finish()
                         } else {
-                            // Jika autentikasi gagal, tampilkan pesan error
                             Log.e("GuestAuth", "Guest authentication failed", task.exception)
                         }
                     }
+
             }
 
             override fun updateDrawState(ds: TextPaint) {

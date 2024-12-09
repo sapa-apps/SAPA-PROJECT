@@ -32,7 +32,7 @@ interface ApiService {
         @Part("nama") nama: RequestBody,
         @Part("emailBaru") email: RequestBody,
         @Part("passwordBaru") password: RequestBody,
-        @Part fotoProfil: MultipartBody.Part?
+        @Part images: MultipartBody.Part?
     ): retrofit2.Response<UpdateProfileResponse>
 }
 

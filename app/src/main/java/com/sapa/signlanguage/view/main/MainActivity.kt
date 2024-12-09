@@ -34,6 +34,10 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
+    private val userRepository: UserRepository by lazy {
+        Injection.provideRepository(applicationContext)
+    }
+
     private lateinit var homeViewModel: HomeViewModel
     private val viewModel by viewModels<MainViewModel> {
         ViewModelFactory.getInstance(this)
@@ -48,24 +52,29 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("MainActivity", "MainActivity dimulai")
 
+        // Mengecek sesi apakah user sudah login atau sebagai tamu
+        checkUserSession()
+
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         navView.setupWithNavController(navController)
 
         setupView()
-        fetchAndSaveProfile()
+    }
 
-        val userPreference = Injection.provideUserPreference(this)
-        val userRepository = UserRepository.getInstance(userPreference)
+    // Fungsi untuk mengecek apakah pengguna adalah guest atau sudah login
+    private fun checkUserSession() {
+        lifecycleScope.launch {
+            val session = userRepository.getSession().first()  // Mendapatkan session
 
-        homeViewModel = ViewModelProvider(this, ViewModelFactory(userRepository)).get(HomeViewModel::class.java)
-
-        // Memanggil refreshProfile untuk memastikan data profil terbaru diambil
-        homeViewModel.refreshProfile()
-
-        homeViewModel.profile.observe(this) { profileName ->
-            Log.d("MainActivity", "Profile data observed: $profileName")
-            // Anda dapat memperbarui UI di sini dengan data profil, misalnya di toolbar atau status bar
+            if (session.isLogin) {
+                // Jika sudah login, ambil dan simpan profil
+                fetchAndSaveProfile()
+                Log.d("MainActivity", "User sudah login")
+            } else {
+                // Jika user adalah guest, arahkan ke MainActivity tanpa profil
+                Log.d("MainActivity", "User adalah tamu")
+            }
         }
     }
 
@@ -80,7 +89,7 @@ class MainActivity : AppCompatActivity() {
                             val response = ApiConfig.apiService.getProfile("Bearer $token")
                             if (response.isSuccessful) {
                                 response.body()?.let { profile ->
-                                    viewModel.saveProfile(profile)  // Panggil fungsi ini untuk menyimpan profil
+                                    viewModel.saveProfile(profile)  // Save profile to ViewModel
                                     Log.d("MainActivity", "Profil berhasil disimpan")
                                     Log.d("MainActivity", "Nama: ${profile.nama}")
                                 }
@@ -115,4 +124,13 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        // Pastikan untuk menambahkan penghapusan sesi tamu jika perlu
+        lifecycleScope.launch {
+            userRepository.clearGuestSession()  // Hapus sesi tamu dari DataStore
+        }
+    }
+
 }
+

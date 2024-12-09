@@ -2,6 +2,7 @@ package com.sapa.signlanguage.view.settingsAccount
 
 import android.app.Application
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -26,17 +27,18 @@ class SettingsAccountViewModel(application: Application) : AndroidViewModel(appl
         nama: RequestBody,
         email: RequestBody,
         password: RequestBody,
-        fotoProfil: MultipartBody.Part?
+        images: MultipartBody.Part?
     ) {
         viewModelScope.launch {
             updateProfileLiveData.postValue(Resource.Loading())
             try {
                 val authHeader = "Bearer $token"
                 Log.d("Settings", "Token: $authHeader") // Debug log token
-                val response = apiService.updateProfile(authHeader, nama, email, password, fotoProfil)
+                val response = apiService.updateProfile(authHeader, nama, email, password, images)
 
                 if (response.isSuccessful) {
                     updateProfileLiveData.postValue(Resource.Success("Profil berhasil diperbarui"))
+                    Toast.makeText(getApplication(), "Silakan Login Kembali", Toast.LENGTH_SHORT).show()
                 } else {
                     updateProfileLiveData.postValue(Resource.Error("Gagal memperbarui profil: ${response.message()}"))
                     Log.e("Settings", "Gagal memperbarui profil: ${response.message()}")

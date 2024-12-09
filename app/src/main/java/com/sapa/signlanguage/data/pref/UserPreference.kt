@@ -17,6 +17,22 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "se
 
 class UserPreference private constructor(private val dataStore: DataStore<Preferences>) {
 
+    private val IS_LOGIN_KEY = booleanPreferencesKey("isLogin")
+    private val IS_GUEST_KEY = booleanPreferencesKey("isGuest")
+    private val EMAIL_KEY = stringPreferencesKey("email")
+    private val TOKEN_KEY = stringPreferencesKey("token")
+    private val PROFILE_KEY = stringPreferencesKey("profile_key")
+
+    // Fungsi untuk menghapus sesi tamu
+    suspend fun clearGuestSession() {
+        dataStore.edit { preferences ->
+            preferences.remove(IS_LOGIN_KEY)
+            preferences.remove(IS_GUEST_KEY)
+            preferences.remove(EMAIL_KEY)
+            preferences.remove(TOKEN_KEY)
+        }
+    }
+
     suspend fun saveSession(user: UserModel) {
         dataStore.edit { preferences ->
             preferences[EMAIL_KEY] = user.email
@@ -55,8 +71,6 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
             preferences[IS_DARK_MODE_KEY] ?: false
         }
     }
-
-    private val PROFILE_KEY = stringPreferencesKey("profile_key")
 
     suspend fun saveProfile(profile: ProfileResponse) {
         val profileJson = Gson().toJson(profile)

@@ -65,6 +65,13 @@ class HomeFragment : Fragment() {
         return root
     }
 
+    override fun onResume() {
+        super.onResume()
+        // Pastikan ViewModel memuat ulang profil
+        homeViewModel.refreshProfile()
+    }
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
