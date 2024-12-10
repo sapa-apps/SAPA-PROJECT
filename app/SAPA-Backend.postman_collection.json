@@ -8,233 +8,414 @@
 	},
 	"item": [
 		{
-			"name": "Register",
-			"event": [
+			"name": "Auth dan Profile",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Response status code is 201\", function () {\r",
-							"    pm.expect(pm.response.code).to.equal(201);\r",
-							"});\r",
-							"\r",
-							"\r",
-							"pm.test(\"Response Content-Type is text/html\", function () {\r",
-							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r",
-							"});\r",
-							"\r",
-							"\r",
-							"pm.test(\"Response body contains 'User registered successfully'\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"User registered successfully\");\r",
-							"});\r",
-							"\r",
-							"\r",
-							"pm.test(\"Response time is less than 500ms\", function () {\r",
-							"  pm.expect(pm.response.responseTime).to.be.below(500);\r",
-							"});\r",
-							""
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 201\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(201);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response Content-Type is text/html\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response body contains 'User registered successfully'\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"User registered successfully\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"nama\": \"lohn Doe\",\r\n  \"email\": \"abi@example.com\",\r\n  \"password\": \"password123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://sapa-api-733973953931.asia-southeast2.run.app/register",
+							"protocol": "https",
+							"host": [
+								"sapa-api-733973953931",
+								"asia-southeast2",
+								"run",
+								"app"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "User melakukan registrasi"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
 						],
-						"type": "text/javascript",
-						"packages": {}
-					}
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6IjNmZDA3MmRmYTM4MDU2NzlmMTZmZTQxNzM4YzJhM2FkM2Y5MGIyMTQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoibG9obiBEb2UiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcHJvamVjdC1ueW9iYS1zYXBhIiwiYXVkIjoicHJvamVjdC1ueW9iYS1zYXBhIiwiYXV0aF90aW1lIjoxNzMzMjI0OTQwLCJ1c2VyX2lkIjoiMmdxZlBHZW1CSmJ4QkRHY0w4bVdBSzVmM0t0MSIsInN1YiI6IjJncWZQR2VtQkpieEJER2NMOG1XQUs1ZjNLdDEiLCJpYXQiOjE3MzMyMjQ5NDAsImV4cCI6MTczMzIyODU0MCwiZW1haWwiOiJhYmlAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiYWJpQGV4YW1wbGUuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.c1xm_M9OgvK3_srMu7lim7UF67HfgyhZhVXMXSlHbP6He6M02VY0Yrky_N-byL_ilt9ygnsbmP4FcFd0gWEryc9j5x5EIhyM5xmqWSJ3HoMbWbZGRDaDfNWSwxWG17lB-tI6dKRZt9FcZjIIwHhjWIaTbtDVVwtVMX9ljC7YyOD91iu3P9mLb5ZdqcLwY-eI4rldu2MbqziUPeptIpLN1FA2JMpW4H1jslTnz-xpUbvJW4LvwMz0hbgNjgwgmx76O6ZCTADCYdOu-SCv8AVBdwKAjufoEbl59nfrIjuklmV2wypdFXIhVZRdWna6vrK_kYIj-l5w75BSf_XTSEovBA\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://sapa-api-733973953931.asia-southeast2.run.app/login",
+							"protocol": "https",
+							"host": [
+								"sapa-api-733973953931",
+								"asia-southeast2",
+								"run",
+								"app"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "User melakukan login"
+					},
+					"response": []
+				},
+				{
+					"name": "Profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjNmZDA3MmRmYTM4MDU2NzlmMTZmZTQxNzM4YzJhM2FkM2Y5MGIyMTQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoibG9obiBEb2UiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcHJvamVjdC1ueW9iYS1zYXBhIiwiYXVkIjoicHJvamVjdC1ueW9iYS1zYXBhIiwiYXV0aF90aW1lIjoxNzMzMjI0OTQwLCJ1c2VyX2lkIjoiMmdxZlBHZW1CSmJ4QkRHY0w4bVdBSzVmM0t0MSIsInN1YiI6IjJncWZQR2VtQkpieEJER2NMOG1XQUs1ZjNLdDEiLCJpYXQiOjE3MzMyMjQ5NDAsImV4cCI6MTczMzIyODU0MCwiZW1haWwiOiJhYmlAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiYWJpQGV4YW1wbGUuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.c1xm_M9OgvK3_srMu7lim7UF67HfgyhZhVXMXSlHbP6He6M02VY0Yrky_N-byL_ilt9ygnsbmP4FcFd0gWEryc9j5x5EIhyM5xmqWSJ3HoMbWbZGRDaDfNWSwxWG17lB-tI6dKRZt9FcZjIIwHhjWIaTbtDVVwtVMX9ljC7YyOD91iu3P9mLb5ZdqcLwY-eI4rldu2MbqziUPeptIpLN1FA2JMpW4H1jslTnz-xpUbvJW4LvwMz0hbgNjgwgmx76O6ZCTADCYdOu-SCv8AVBdwKAjufoEbl59nfrIjuklmV2wypdFXIhVZRdWna6vrK_kYIj-l5w75BSf_XTSEovBA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNmZDA3MmRmYTM4MDU2NzlmMTZmZTQxNzM4YzJhM2FkM2Y5MGIyMTQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoibG9obiBEb2UiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcHJvamVjdC1ueW9iYS1zYXBhIiwiYXVkIjoicHJvamVjdC1ueW9iYS1zYXBhIiwiYXV0aF90aW1lIjoxNzMzMjI0OTQwLCJ1c2VyX2lkIjoiMmdxZlBHZW1CSmJ4QkRHY0w4bVdBSzVmM0t0MSIsInN1YiI6IjJncWZQR2VtQkpieEJER2NMOG1XQUs1ZjNLdDEiLCJpYXQiOjE3MzMyMjQ5NDAsImV4cCI6MTczMzIyODU0MCwiZW1haWwiOiJhYmlAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiYWJpQGV4YW1wbGUuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.c1xm_M9OgvK3_srMu7lim7UF67HfgyhZhVXMXSlHbP6He6M02VY0Yrky_N-byL_ilt9ygnsbmP4FcFd0gWEryc9j5x5EIhyM5xmqWSJ3HoMbWbZGRDaDfNWSwxWG17lB-tI6dKRZt9FcZjIIwHhjWIaTbtDVVwtVMX9ljC7YyOD91iu3P9mLb5ZdqcLwY-eI4rldu2MbqziUPeptIpLN1FA2JMpW4H1jslTnz-xpUbvJW4LvwMz0hbgNjgwgmx76O6ZCTADCYdOu-SCv8AVBdwKAjufoEbl59nfrIjuklmV2wypdFXIhVZRdWna6vrK_kYIj-l5w75BSf_XTSEovBA",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://sapa-api-733973953931.asia-southeast2.run.app/profile",
+							"protocol": "https",
+							"host": [
+								"sapa-api-733973953931",
+								"asia-southeast2",
+								"run",
+								"app"
+							],
+							"path": [
+								"profile"
+							]
+						},
+						"description": "Menampilkan profile user"
+					},
+					"response": []
+				},
+				{
+					"name": "Guest",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://sapa-api-733973953931.asia-southeast2.run.app/guest",
+							"protocol": "https",
+							"host": [
+								"sapa-api-733973953931",
+								"asia-southeast2",
+								"run",
+								"app"
+							],
+							"path": [
+								"guest"
+							]
+						},
+						"description": "User Login sebagai guest"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNmZDA3MmRmYTM4MDU2NzlmMTZmZTQxNzM4YzJhM2FkM2Y5MGIyMTQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoibG9obiBEb2UiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcHJvamVjdC1ueW9iYS1zYXBhIiwiYXVkIjoicHJvamVjdC1ueW9iYS1zYXBhIiwiYXV0aF90aW1lIjoxNzMzMjI0OTQwLCJ1c2VyX2lkIjoiMmdxZlBHZW1CSmJ4QkRHY0w4bVdBSzVmM0t0MSIsInN1YiI6IjJncWZQR2VtQkpieEJER2NMOG1XQUs1ZjNLdDEiLCJpYXQiOjE3MzMyMjQ5NDAsImV4cCI6MTczMzIyODU0MCwiZW1haWwiOiJhYmlAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiYWJpQGV4YW1wbGUuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.c1xm_M9OgvK3_srMu7lim7UF67HfgyhZhVXMXSlHbP6He6M02VY0Yrky_N-byL_ilt9ygnsbmP4FcFd0gWEryc9j5x5EIhyM5xmqWSJ3HoMbWbZGRDaDfNWSwxWG17lB-tI6dKRZt9FcZjIIwHhjWIaTbtDVVwtVMX9ljC7YyOD91iu3P9mLb5ZdqcLwY-eI4rldu2MbqziUPeptIpLN1FA2JMpW4H1jslTnz-xpUbvJW4LvwMz0hbgNjgwgmx76O6ZCTADCYdOu-SCv8AVBdwKAjufoEbl59nfrIjuklmV2wypdFXIhVZRdWna6vrK_kYIj-l5w75BSf_XTSEovBA",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nama",
+									"value": "Lingling",
+									"type": "text"
+								},
+								{
+									"key": "emailBaru",
+									"value": "best@example.com",
+									"type": "text"
+								},
+								{
+									"key": "fotoProfil",
+									"type": "file",
+									"src": "postman-cloud:///1efad947-0ae2-4240-a94f-f27fa6881cc0"
+								},
+								{
+									"key": "passwordBaru",
+									"value": "11223344",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://sapa-api-733973953931.asia-southeast2.run.app/profile/update",
+							"protocol": "https",
+							"host": [
+								"sapa-api-733973953931",
+								"asia-southeast2",
+								"run",
+								"app"
+							],
+							"path": [
+								"profile",
+								"update"
+							]
+						},
+						"description": "User dapat mengupdate atau mengubah nama, foto profil dan password"
+					},
+					"response": []
 				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \r\n    \"nama\": \"lohn Doe\",\r\n  \"email\": \"abi@example.com\",\r\n  \"password\": \"password123\"\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://sapa-api-733973953931.asia-southeast2.run.app/register",
-					"protocol": "https",
-					"host": [
-						"sapa-api-733973953931",
-						"asia-southeast2",
-						"run",
-						"app"
-					],
-					"path": [
-						"register"
-					]
-				},
-				"description": "User melakukan registrasi"
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Login",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6IjNmZDA3MmRmYTM4MDU2NzlmMTZmZTQxNzM4YzJhM2FkM2Y5MGIyMTQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoibG9obiBEb2UiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcHJvamVjdC1ueW9iYS1zYXBhIiwiYXVkIjoicHJvamVjdC1ueW9iYS1zYXBhIiwiYXV0aF90aW1lIjoxNzMzMjI0OTQwLCJ1c2VyX2lkIjoiMmdxZlBHZW1CSmJ4QkRHY0w4bVdBSzVmM0t0MSIsInN1YiI6IjJncWZQR2VtQkpieEJER2NMOG1XQUs1ZjNLdDEiLCJpYXQiOjE3MzMyMjQ5NDAsImV4cCI6MTczMzIyODU0MCwiZW1haWwiOiJhYmlAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiYWJpQGV4YW1wbGUuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.c1xm_M9OgvK3_srMu7lim7UF67HfgyhZhVXMXSlHbP6He6M02VY0Yrky_N-byL_ilt9ygnsbmP4FcFd0gWEryc9j5x5EIhyM5xmqWSJ3HoMbWbZGRDaDfNWSwxWG17lB-tI6dKRZt9FcZjIIwHhjWIaTbtDVVwtVMX9ljC7YyOD91iu3P9mLb5ZdqcLwY-eI4rldu2MbqziUPeptIpLN1FA2JMpW4H1jslTnz-xpUbvJW4LvwMz0hbgNjgwgmx76O6ZCTADCYdOu-SCv8AVBdwKAjufoEbl59nfrIjuklmV2wypdFXIhVZRdWna6vrK_kYIj-l5w75BSf_XTSEovBA\"\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Content",
+			"item": [
+				{
+					"name": "Post Content",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "sample tittle",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "sample description",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "postman-cloud:///1efad675-77a8-4a20-8e3c-38fb0efe06d8"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://sapa-api-733973953931.asia-southeast2.run.app/contents",
+							"protocol": "https",
+							"host": [
+								"sapa-api-733973953931",
+								"asia-southeast2",
+								"run",
+								"app"
+							],
+							"path": [
+								"contents"
+							]
 						}
-					}
-				},
-				"url": {
-					"raw": "https://sapa-api-733973953931.asia-southeast2.run.app/login",
-					"protocol": "https",
-					"host": [
-						"sapa-api-733973953931",
-						"asia-southeast2",
-						"run",
-						"app"
-					],
-					"path": [
-						"login"
-					]
-				},
-				"description": "User melakukan login"
-			},
-			"response": []
-		},
-		{
-			"name": "Profile",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjNmZDA3MmRmYTM4MDU2NzlmMTZmZTQxNzM4YzJhM2FkM2Y5MGIyMTQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoibG9obiBEb2UiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcHJvamVjdC1ueW9iYS1zYXBhIiwiYXVkIjoicHJvamVjdC1ueW9iYS1zYXBhIiwiYXV0aF90aW1lIjoxNzMzMjI0OTQwLCJ1c2VyX2lkIjoiMmdxZlBHZW1CSmJ4QkRHY0w4bVdBSzVmM0t0MSIsInN1YiI6IjJncWZQR2VtQkpieEJER2NMOG1XQUs1ZjNLdDEiLCJpYXQiOjE3MzMyMjQ5NDAsImV4cCI6MTczMzIyODU0MCwiZW1haWwiOiJhYmlAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiYWJpQGV4YW1wbGUuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.c1xm_M9OgvK3_srMu7lim7UF67HfgyhZhVXMXSlHbP6He6M02VY0Yrky_N-byL_ilt9ygnsbmP4FcFd0gWEryc9j5x5EIhyM5xmqWSJ3HoMbWbZGRDaDfNWSwxWG17lB-tI6dKRZt9FcZjIIwHhjWIaTbtDVVwtVMX9ljC7YyOD91iu3P9mLb5ZdqcLwY-eI4rldu2MbqziUPeptIpLN1FA2JMpW4H1jslTnz-xpUbvJW4LvwMz0hbgNjgwgmx76O6ZCTADCYdOu-SCv8AVBdwKAjufoEbl59nfrIjuklmV2wypdFXIhVZRdWna6vrK_kYIj-l5w75BSf_XTSEovBA",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNmZDA3MmRmYTM4MDU2NzlmMTZmZTQxNzM4YzJhM2FkM2Y5MGIyMTQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoibG9obiBEb2UiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcHJvamVjdC1ueW9iYS1zYXBhIiwiYXVkIjoicHJvamVjdC1ueW9iYS1zYXBhIiwiYXV0aF90aW1lIjoxNzMzMjI0OTQwLCJ1c2VyX2lkIjoiMmdxZlBHZW1CSmJ4QkRHY0w4bVdBSzVmM0t0MSIsInN1YiI6IjJncWZQR2VtQkpieEJER2NMOG1XQUs1ZjNLdDEiLCJpYXQiOjE3MzMyMjQ5NDAsImV4cCI6MTczMzIyODU0MCwiZW1haWwiOiJhYmlAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiYWJpQGV4YW1wbGUuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.c1xm_M9OgvK3_srMu7lim7UF67HfgyhZhVXMXSlHbP6He6M02VY0Yrky_N-byL_ilt9ygnsbmP4FcFd0gWEryc9j5x5EIhyM5xmqWSJ3HoMbWbZGRDaDfNWSwxWG17lB-tI6dKRZt9FcZjIIwHhjWIaTbtDVVwtVMX9ljC7YyOD91iu3P9mLb5ZdqcLwY-eI4rldu2MbqziUPeptIpLN1FA2JMpW4H1jslTnz-xpUbvJW4LvwMz0hbgNjgwgmx76O6ZCTADCYdOu-SCv8AVBdwKAjufoEbl59nfrIjuklmV2wypdFXIhVZRdWna6vrK_kYIj-l5w75BSf_XTSEovBA",
-						"type": "text"
 					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
+					"response": []
 				},
-				"url": {
-					"raw": "https://sapa-api-733973953931.asia-southeast2.run.app/profile",
-					"protocol": "https",
-					"host": [
-						"sapa-api-733973953931",
-						"asia-southeast2",
-						"run",
-						"app"
-					],
-					"path": [
-						"profile"
-					]
-				},
-				"description": "Menampilkan profile user"
-			},
-			"response": []
-		},
-		{
-			"name": "Guest",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "https://sapa-api-733973953931.asia-southeast2.run.app/guest",
-					"protocol": "https",
-					"host": [
-						"sapa-api-733973953931",
-						"asia-southeast2",
-						"run",
-						"app"
-					],
-					"path": [
-						"guest"
-					]
-				},
-				"description": "User Login sebagai guest"
-			},
-			"response": []
-		},
-		{
-			"name": "Update Profile",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjNmZDA3MmRmYTM4MDU2NzlmMTZmZTQxNzM4YzJhM2FkM2Y5MGIyMTQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoibG9obiBEb2UiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcHJvamVjdC1ueW9iYS1zYXBhIiwiYXVkIjoicHJvamVjdC1ueW9iYS1zYXBhIiwiYXV0aF90aW1lIjoxNzMzMjI0OTQwLCJ1c2VyX2lkIjoiMmdxZlBHZW1CSmJ4QkRHY0w4bVdBSzVmM0t0MSIsInN1YiI6IjJncWZQR2VtQkpieEJER2NMOG1XQUs1ZjNLdDEiLCJpYXQiOjE3MzMyMjQ5NDAsImV4cCI6MTczMzIyODU0MCwiZW1haWwiOiJhYmlAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiYWJpQGV4YW1wbGUuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.c1xm_M9OgvK3_srMu7lim7UF67HfgyhZhVXMXSlHbP6He6M02VY0Yrky_N-byL_ilt9ygnsbmP4FcFd0gWEryc9j5x5EIhyM5xmqWSJ3HoMbWbZGRDaDfNWSwxWG17lB-tI6dKRZt9FcZjIIwHhjWIaTbtDVVwtVMX9ljC7YyOD91iu3P9mLb5ZdqcLwY-eI4rldu2MbqziUPeptIpLN1FA2JMpW4H1jslTnz-xpUbvJW4LvwMz0hbgNjgwgmx76O6ZCTADCYdOu-SCv8AVBdwKAjufoEbl59nfrIjuklmV2wypdFXIhVZRdWna6vrK_kYIj-l5w75BSf_XTSEovBA",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "multipart/form-data",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "nama",
-							"value": "Lingling",
-							"type": "text"
-						},
-						{
-							"key": "emailBaru",
-							"value": "best@example.com",
-							"type": "text"
-						},
-						{
-							"key": "fotoProfil",
-							"type": "file",
-							"src": "postman-cloud:///1efad947-0ae2-4240-a94f-f27fa6881cc0"
-						},
-						{
-							"key": "passwordBaru",
-							"value": "11223344",
-							"type": "text"
+				{
+					"name": "Get all Content",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://sapa-api-733973953931.asia-southeast2.run.app/contents",
+							"protocol": "https",
+							"host": [
+								"sapa-api-733973953931",
+								"asia-southeast2",
+								"run",
+								"app"
+							],
+							"path": [
+								"contents"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "https://sapa-api-733973953931.asia-southeast2.run.app/profile/update",
-					"protocol": "https",
-					"host": [
-						"sapa-api-733973953931",
-						"asia-southeast2",
-						"run",
-						"app"
-					],
-					"path": [
-						"profile",
-						"update"
-					]
+				{
+					"name": "Get Content With Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://sapa-api-733973953931.asia-southeast2.run.app/contents/056c814b-3cdb-48fd-bd35-831ac232f393",
+							"protocol": "https",
+							"host": [
+								"sapa-api-733973953931",
+								"asia-southeast2",
+								"run",
+								"app"
+							],
+							"path": [
+								"contents",
+								"056c814b-3cdb-48fd-bd35-831ac232f393"
+							]
+						}
+					},
+					"response": []
 				},
-				"description": "User dapat mengupdate atau mengubah nama, foto profil dan password"
-			},
-			"response": []
+				{
+					"name": "Update Content",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "updated description",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "updated description",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "postman-cloud:///1efad7df-c534-4e90-ab40-e3a0e10cb359"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://sapa-api-733973953931.asia-southeast2.run.app/contents/c4852ec0-ab19-4001-92d0-46d05e7933ca",
+							"protocol": "https",
+							"host": [
+								"sapa-api-733973953931",
+								"asia-southeast2",
+								"run",
+								"app"
+							],
+							"path": [
+								"contents",
+								"c4852ec0-ab19-4001-92d0-46d05e7933ca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Content",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://sapa-api-733973953931.asia-southeast2.run.app/contents/c4852ec0-ab19-4001-92d0-46d05e7933ca",
+							"protocol": "https",
+							"host": [
+								"sapa-api-733973953931",
+								"asia-southeast2",
+								"run",
+								"app"
+							],
+							"path": [
+								"contents",
+								"c4852ec0-ab19-4001-92d0-46d05e7933ca"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
