@@ -103,7 +103,7 @@ class LoginActivity : AppCompatActivity() {
                             }
                         } else {
                             val error = task.exception?.message
-                            showToast("Login gagal: $error")
+                            showToast("Login gagal: Email dan Password tidak cocok")
                             Log.e("LoginActivity", "Login Firebase gagal: $error")
                         }
                     }

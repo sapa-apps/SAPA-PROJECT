@@ -22,7 +22,6 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import android.util.Log
 import com.sapa.signlanguage.view.ViewModelFactory
-import com.sapa.signlanguage.view.main.MainActivity
 
 class SettingsFragment : Fragment() {
 
@@ -94,8 +93,8 @@ class SettingsFragment : Fragment() {
                     // Jika pengguna adalah tamu, tampilkan pesan dan alihkan
                     Toast.makeText(
                         requireContext(),
-                        "Fitur Settings Account hanya tersedia untuk pengguna terdaftar.",
-                        Toast.LENGTH_SHORT
+                        "Fitur Settings Account & Night Mode hanya untuk user terdaftar.",
+                        Toast.LENGTH_LONG
                     ).show()
                     disableAccountAccess()
                 }

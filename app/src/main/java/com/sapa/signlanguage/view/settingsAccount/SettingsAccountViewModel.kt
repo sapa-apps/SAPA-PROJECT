@@ -38,6 +38,7 @@ class SettingsAccountViewModel(application: Application) : AndroidViewModel(appl
 
                 if (response.isSuccessful) {
                     updateProfileLiveData.postValue(Resource.Success("Profil berhasil diperbarui"))
+                    Toast.makeText(getApplication(), "Profil berhasil diperbarui", Toast.LENGTH_SHORT).show()
                     Toast.makeText(getApplication(), "Silakan Login Kembali", Toast.LENGTH_SHORT).show()
                 } else {
                     updateProfileLiveData.postValue(Resource.Error("Gagal memperbarui profil: ${response.message()}"))

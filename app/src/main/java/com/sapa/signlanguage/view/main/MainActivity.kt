@@ -1,34 +1,25 @@
 package com.sapa.signlanguage.view.main
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sapa.signlanguage.databinding.ActivityMainBinding
 import com.sapa.signlanguage.view.ViewModelFactory
-import com.sapa.signlanguage.view.welcome.WelcomeActivity
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.sapa.signlanguage.R
 import com.sapa.signlanguage.data.UserRepository
 import com.sapa.signlanguage.data.remote.ApiConfig
 import com.sapa.signlanguage.di.Injection
-import com.sapa.signlanguage.view.home.HomeViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -38,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         Injection.provideRepository(applicationContext)
     }
 
-    private lateinit var homeViewModel: HomeViewModel
     private val viewModel by viewModels<MainViewModel> {
         ViewModelFactory.getInstance(this)
     }
@@ -52,7 +42,6 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("MainActivity", "MainActivity dimulai")
 
-        // Mengecek sesi apakah user sudah login atau sebagai tamu
         checkUserSession()
 
         val navView: BottomNavigationView = binding.navView
@@ -74,6 +63,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 // Jika user adalah guest, arahkan ke MainActivity tanpa profil
                 Log.d("MainActivity", "User adalah tamu")
+                Toast.makeText(this@MainActivity, "Kamu Login Sebagai Guest User", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -92,6 +82,7 @@ class MainActivity : AppCompatActivity() {
                                     viewModel.saveProfile(profile)  // Save profile to ViewModel
                                     Log.d("MainActivity", "Profil berhasil disimpan")
                                     Log.d("MainActivity", "Nama: ${profile.nama}")
+                                    Toast.makeText(this@MainActivity, "Selamat datang ${profile.nama}", Toast.LENGTH_SHORT).show()
                                 }
                             } else {
                                 Log.e("MainActivity", "Gagal mengambil profil: ${response.message()}")
@@ -118,10 +109,6 @@ class MainActivity : AppCompatActivity() {
             )
         }
         supportActionBar?.hide()
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroy() {

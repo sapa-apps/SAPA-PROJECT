@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LoginWithAnimation</string>
+    <string name="app_name">SAPA</string>
     <string name="signup">Daftar</string>
     <string name="login">Masuk</string>
     <string name="btn_google">Continue with Google</string>

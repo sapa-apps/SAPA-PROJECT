@@ -34,7 +34,7 @@
             android:id="@+id/textViewNama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Agus Sedih"
+            android:text="Guest User"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -42,7 +42,7 @@
             android:id="@+id/textViewEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="agustakutbu@yahoo.com"
+            android:text="Guest Session"
             android:textSize="14sp"
             android:layout_marginTop="4dp" />
     </LinearLayout>
