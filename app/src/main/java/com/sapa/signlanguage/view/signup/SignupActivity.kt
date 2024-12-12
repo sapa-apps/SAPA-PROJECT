@@ -186,10 +186,6 @@ class SignupActivity : AppCompatActivity() {
 
     private fun playAnimation() {
 
-        val title = ObjectAnimator.ofFloat(binding.titleTextView, View.ALPHA, 1f).setDuration(100)
-        val title2 = ObjectAnimator.ofFloat(binding.titleTextView2, View.ALPHA, 1f).setDuration(100)
-        val subtitle = ObjectAnimator.ofFloat(binding.subTitleTextView, View.ALPHA, 1f).setDuration(100)
-        val subtitle2 = ObjectAnimator.ofFloat(binding.subTitleTextView2, View.ALPHA, 1f).setDuration(100)
         val nameTextView =
             ObjectAnimator.ofFloat(binding.nameTextView, View.ALPHA, 1f).setDuration(100)
         val nameEditTextLayout =
@@ -213,10 +209,6 @@ class SignupActivity : AppCompatActivity() {
 
         AnimatorSet().apply {
             playSequentially(
-                title,
-                title2,
-                subtitle,
-                subtitle2,
                 nameTextView,
                 nameEditTextLayout,
                 emailTextView,
