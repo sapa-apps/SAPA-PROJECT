@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "project-nyoba-sapa",
+  "private_key_id": "e7a595c0d485dcced32ad492ae903267b6285cb7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCW7Fvpx9yk3aHS\ntSNbnaRaw+lofyceEDdf1hD90PsSQ9ReEYHssDUWk2NHqYBzXnLrPUoSUw8ckmhL\nc4CY3EeKKc3eX3JC+sgfgiAiBzcfRjzmk95XnFzdMBaxlQn8U0PyyC3EVKgFe9n1\nftGaf5Da3lUVn28v2gNrTTAtkHqJ3PL/pZ7RGLBBe4o4EqkuzH/glxYFK3B7s5lM\nM/5uLTIB6zGLVG7YsR9qpk+HUHBH3tW6+rmfgQMqJzW6F6C2ndnPmsaBQLx9lI6m\nxGwtDoSX52bpxR7DJNbSUXOSwIlICdO1wkXUzLDUjQw5dxabu1wfJjbEPpHpc/iZ\nRqBIFFHBAgMBAAECggEAB+3eEa/AQ2HTioGdccbxUhrLN1lq1t+s5m+Vj/LmpfnY\np/figWrBN0ZCEotGEN729Fim0hn5XXEXDVPBqgZKCekSrwAJEu91toC8gHKBmQvf\nJObC6TZxWJDvYvVnbhF6gesLddj+xN78v12iKdb8PMuD4TFxrYFrlDvHcAq7ArrQ\n00Nr0SL/G0+lF/MgQBuSyjg7PbXXiKtTwGisE2Hv2hAEslXUNPoA4cnuvSeqxhNy\n4MHqjuKDhvyIKDw3fOtZMdhqAEpflF9dTPxTOLThuYLZQe64z+D7os82d86xpEKU\n3W3pYw0LNgioTCtMOSWhymBpuChn6cmXmKcBOK1AAwKBgQDPRJpj/FrQI7/nfoVK\nRLiem8vyw6BO27kUtDSWTXrIpQgRY9Bnyoq2vvViQ7dI042KnPPnfIZ3F63kD40C\nIwFqLmOJFIGx4Xkc1F4KIiHO5cC6uXa0aYiWgujU18l48O3+g+zNsYpQwpeMrX0B\np7/X4U/1QnR5H0F56yY+noPcZwKBgQC6aGKlsVPlX0QsplQrEAJj94ebHOH3cVi5\nuWL2d4/PFhc5zbxrRNsqJS5BHLUtUoVw6+Ff3OLMfx6wGIbyggCTxjjAMQcSVhkp\n/5VFJ8CgDjpxMhrJLRosrCJzNY50+gSjfaNYnbTt7Kt1P/JerOPELprUoNiaK2W0\nuhoL3HWHlwKBgGf8kzj2stkaFn2eDGFmePmaUIhLfXIS6phokLmXxbJEmfefjD+G\nbnGg/JuAPcRb3vdcJ0JMR2oYhzWUV7pqtZsACxALKcaEyK6eHVAYL74NptQHmHaL\nO+vHYejnGj2DIuQ+a+AG4s4B0ubRY5YhAy7b67Gw1Z6u/7qbL2TbQmyhAoGAJhXZ\nwdy/NWgHd8/r9nho5J/YVvrJuFKyPBAChjTbbwYmbKr6SjhhRvUdxDPnWIE5vl6T\nR5DLzdhTHsuEFtw03fxr7+iUd0ycC5aqmtyKYKlHi4UfL+dFJ8drqnpQxtmmRPkQ\nfLSMGOh4B5avIGTWjGixPaw3VRh0yT4UwEOkx7UCgYBnWszJpV1SZvfA9ENX9De6\nt4LSZVFizlLXVpECGP3L5U64rMw8kpXZUCd9P73v3i/2fxOCz8rw7LK4sulfnRoN\n698yC1FodfhiCUrZ24UtDWJq1V2YlelFNaIvGAwVk1m99Wts3W6eLdYFe//iAEJ5\n18Q7phNLWGeZsCL/8PCqsw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "sapa-project@project-nyoba-sapa.iam.gserviceaccount.com",
+  "client_id": "103492378962483345131",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sapa-project%40project-nyoba-sapa.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
