@@ -71,6 +71,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
+
+        binding.signUpButton.setOnClickListener {
+            val intent = Intent(this, SignupActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.signInButton.setOnClickListener {
             val email = binding.emailEditText.text.toString().trim()
             val password = binding.passwordEditText.text.toString().trim()
@@ -171,8 +177,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         resetText.setSpan(clickableSpan, 23, 36, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        binding.resetPasswordText.text = resetText
-        binding.resetPasswordText.movementMethod = LinkMovementMethod.getInstance()
+
     }
 
     private fun setupSpannableTextForGuest() {
@@ -249,19 +254,12 @@ class LoginActivity : AppCompatActivity() {
         // Menetapkan "Register Now" sebagai teks klikabel
         spannable.setSpan(clickableSpan, 23, 35, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-        // Terapkan ke TextView
-        binding.registerPrompt.text = spannable
-        binding.registerPrompt.movementMethod = LinkMovementMethod.getInstance()
     }
 
 
     private fun playAnimation() {
 
-        val title = ObjectAnimator.ofFloat(binding.titleTextView, View.ALPHA, 1f).setDuration(100)
-        val message =
-            ObjectAnimator.ofFloat(binding.messageTextView, View.ALPHA, 1f).setDuration(100)
-        val message2 =
-            ObjectAnimator.ofFloat(binding.messageTextView2, View.ALPHA, 1f).setDuration(100)
+
         val emailTextView =
             ObjectAnimator.ofFloat(binding.emailTextView, View.ALPHA, 1f).setDuration(100)
         val emailEditTextLayout =
@@ -271,35 +269,17 @@ class LoginActivity : AppCompatActivity() {
         val passwordEditTextLayout =
             ObjectAnimator.ofFloat(binding.passwordEditTextLayout, View.ALPHA, 1f).setDuration(100)
         val login = ObjectAnimator.ofFloat(binding.signInButton, View.ALPHA, 1f).setDuration(100)
-        val orText = ObjectAnimator.ofFloat(binding.orText, View.ALPHA, 1f).setDuration(100)
-        val dividerLeft =
-            ObjectAnimator.ofFloat(binding.dividerLeft, View.ALPHA, 1f).setDuration(100)
-        val dividerRight =
-            ObjectAnimator.ofFloat(binding.dividerRight, View.ALPHA, 1f).setDuration(100)
-        val signInButton2 =
-            ObjectAnimator.ofFloat(binding.btnGoogle, View.ALPHA, 1f).setDuration(100)
         val guestPrompt =
             ObjectAnimator.ofFloat(binding.guestPrompt, View.ALPHA, 1f).setDuration(100)
-        val registerPrompt =
-            ObjectAnimator.ofFloat(binding.registerPrompt, View.ALPHA, 1f).setDuration(100)
-
 
         AnimatorSet().apply {
             playSequentially(
-                title,
-                message,
-                message2,
                 emailTextView,
                 emailEditTextLayout,
                 passwordTextView,
                 passwordEditTextLayout,
                 login,
-                orText,
-                dividerLeft,
-                dividerRight,
-                signInButton2,
-                guestPrompt,
-                registerPrompt
+                guestPrompt
             )
             startDelay = 100
         }.start()

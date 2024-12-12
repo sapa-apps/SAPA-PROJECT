@@ -24,6 +24,7 @@
         app:layout_constraintTop_toTopOf="@id/guidelineHorizontal">
 
         <TextView
+            android:fontFamily="@font/poppins_bold"
             android:id="@+id/headerGreeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,6 +33,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:fontFamily="@font/poppins_regular"
             android:id="@+id/headerDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -71,6 +73,7 @@
                 android:src="@drawable/ic_speech" />
 
             <TextView
+                android:fontFamily="@font/montserrat_semibold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -101,6 +104,7 @@
                 android:src="@drawable/baseline_text_fields_24" />
 
             <TextView
+                android:fontFamily="@font/montserrat_semibold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Text to speech"
@@ -129,6 +133,7 @@
                 android:src="@drawable/ic_book" />
 
             <TextView
+                android:fontFamily="@font/montserrat_semibold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Learn me"
@@ -157,6 +162,7 @@
                 android:src="@drawable/ic_history" />
 
             <TextView
+                android:fontFamily="@font/montserrat_semibold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Other"
@@ -184,6 +190,7 @@
 
 
         <TextView
+            android:fontFamily="@font/poppins_bold"
             android:id="@+id/artikel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -194,6 +201,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:fontFamily="@font/poppins_regular"
             android:id="@+id/detailArtikel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -236,6 +244,7 @@
                             android:scaleType="centerCrop" />
 
                         <TextView
+                            android:fontFamily="@font/montserrat_semibold"
                             android:id="@+id/articleTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -244,6 +253,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:fontFamily="@font/montserrat_regular"
                             android:id="@+id/articleSubtitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

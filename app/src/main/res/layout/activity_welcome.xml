@@ -7,11 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".view.welcome.WelcomeActivity">
 
-
-
-
-
-
     <Button
         android:id="@+id/loginButton"
         android:layout_width="0dp"

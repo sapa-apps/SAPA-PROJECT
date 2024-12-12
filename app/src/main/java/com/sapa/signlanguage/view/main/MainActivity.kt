@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                                     viewModel.saveProfile(profile)  // Save profile to ViewModel
                                     Log.d("MainActivity", "Profil berhasil disimpan")
                                     Log.d("MainActivity", "Nama: ${profile.nama}")
-                                    Toast.makeText(this@MainActivity, "Selamat datang ${profile.nama}", Toast.LENGTH_SHORT).show()
+//                                    Toast.makeText(this@MainActivity, "Selamat datang ${profile.nama}", Toast.LENGTH_SHORT).show()
                                 }
                             } else {
                                 Log.e("MainActivity", "Gagal mengambil profil: ${response.message()}")
@@ -120,4 +120,3 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
-

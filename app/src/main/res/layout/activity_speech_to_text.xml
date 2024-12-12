@@ -7,6 +7,7 @@
 
     <!-- Title -->
     <TextView
+        android:fontFamily="@font/poppins_bold"
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,6 +19,7 @@
 
     <!-- TextView to display recognized text, flexible size -->
     <TextView
+        android:fontFamily="@font/montserrat_medium"
         android:id="@+id/tvSpeechResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SAPA</string>
     <string name="signup">Daftar</string>
-    <string name="login">Masuk</string>
+    <string name="login">Login</string>
     <string name="btn_google">Continue with Google</string>
 
     <string name="message_welcome_page">Mau belajar Android, iOS, Machine Learning, Cloud, Front-End, Back-End, dan bidang IT lainnya? Di Dicoding aja!</string>

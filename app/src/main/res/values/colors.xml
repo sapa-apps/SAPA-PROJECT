@@ -2,6 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="icon_tint">@color/black</color>
+    <color name="primary">#16056B</color>
 
     <color name="navy">#2D3D4F</color>
 </resources>
