@@ -1,10 +1,9 @@
 <h1 align="center">SAPA Project by C242-PS212 Team </h1>
 <p align="center">"Sign Language Personal Assistant"</p>
 
-# Backgrounder
-
 <img width="1114" height="625" alt="image" src="https://github.com/user-attachments/assets/a989545f-e664-4878-a7ce-235be38e6010" />
 
+# Backgrounder
 
 Indonesia has over 923,941 individuals who are deaf or hard of hearing, often facing communication chalenges, especialy with those who do not understand sign language. Our team's experience interacting with a deaf food vendor highlighted the communication barriers caused by a lack of understanding of sign language. This issue demonstrates the need for a solution to bridge the communication gap between both parties. Our project aims to develop a video processing application that can recognize sign language and translate it into Indonesian, facilitating interaction between the deaf community and the general public.
 
